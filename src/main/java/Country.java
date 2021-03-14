@@ -7,9 +7,9 @@ public enum Country {
     Japan("Япония", false);
 
     private final String ruName;
-    private final Boolean isOpen;
+    private final boolean isOpen;
 
-    Country(final String ruName, final Boolean isOpen) {
+    Country(final String ruName, final boolean isOpen) {
         this.ruName = ruName;
         this.isOpen = isOpen;
     }
@@ -29,6 +29,13 @@ public enum Country {
         }
     }
 
+    public void isCountryOpen() {
+        if (getOpen()) {
+            System.out.println("открыта для посещения. " + '\n');
+        } else {
+            System.out.println("закрыта для посещения. " + '\n');
+        }
+    }
     @Override
     public String toString() {
         return "Страна [" + super.toString()
@@ -36,7 +43,7 @@ public enum Country {
                 + "] ";
     }
 
-    public Boolean getOpen() {
+    public boolean getOpen() {
         return isOpen;
     }
 }

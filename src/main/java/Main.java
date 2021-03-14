@@ -10,24 +10,18 @@ public class Main {
         String string = scanner.nextLine();
         try {
             System.out.print(Country.valueOf(string));
-            if (Country.valueOf(string).getOpen()) {
-                System.out.println("открыта для посещения. " + '\n');
-            } else {
-                System.out.println("закрыта для посещения. " + '\n');
-            }
+            Country.valueOf(string).isCountryOpen();
             return;
-        } catch (NullPointerException | IllegalArgumentException e) {
+        } catch (NullPointerException e) {
+            System.out.println("Наименование страны на английском введено некорректно, проверяем русское название...");
+        } catch (IllegalArgumentException e) {
             System.out.println("Наименование страны на английском введено некорректно, проверяем русское название...");
         }
 
         try {
             Country country = Country.getByRuName(string);
             System.out.print(country);
-            if (country.getOpen()) {
-                System.out.println("открыта для посещения. " + '\n');
-            } else {
-                System.out.println("закрыта для посещения. " + '\n');
-            }
+            country.isCountryOpen();
         } catch (NoSuchCountryException e) {
             System.out.println(e.getMessage());
         }
